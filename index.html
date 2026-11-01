@@ -4,75 +4,56 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101827">
-<meta name="description" content="Облік пробігу та витрати пального автомобілів">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="description" content="Безкоштовний облік пробігу та витрати пального автомобілів">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
 <title>Облік авто</title>
 <style>
-:root{color-scheme:dark;--bg:#0b1220;--panel:#131e30;--panel2:#1a2940;--line:#293950;--text:#edf3fb;--muted:#9aabc1;--accent:#6ee7b7;--warn:#fbbf24;--danger:#fb7185}
+:root{color-scheme:dark;--bg:#0b1220;--panel:#131e30;--line:#293950;--text:#edf3fb;--muted:#9aabc1;--accent:#6ee7b7;--danger:#fb7185}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#101c30,#09111e 55%);color:var(--text);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
-header{padding:calc(18px + env(safe-area-inset-top)) 18px 16px;position:sticky;top:0;background:#101827ed;backdrop-filter:blur(14px);z-index:5;border-bottom:1px solid var(--line)}
+header{padding:calc(16px + env(safe-area-inset-top)) 18px 14px;position:sticky;top:0;background:#101827ed;backdrop-filter:blur(14px);z-index:5;border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:11px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#34d399,#0f766e);display:grid;place-items:center;font-size:22px;color:#06251d}.brand h1{font-size:19px;margin:0}.brand p{font-size:12px;color:var(--muted);margin:3px 0 0}
-main{max-width:760px;margin:auto;padding:18px 14px 105px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}.tab{border:1px solid var(--line);border-radius:13px;background:var(--panel);color:var(--muted);padding:12px 5px;font-weight:650}.tab.active{background:#16483f;border-color:#277b68;color:#b9f8df}
-.card{background:linear-gradient(145deg,#162338,#111b2c);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 10px 28px #0002}.card h2{font-size:17px;margin:0 0 14px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field.full{grid-column:1/-1}label{font-size:12px;color:var(--muted)}input,select{width:100%;background:#0c1727;border:1px solid #34465e;border-radius:11px;color:var(--text);padding:12px;font:inherit;min-width:0;outline:none}input:focus,select:focus{border-color:var(--accent)}.hint{font-size:12px;color:var(--muted);line-height:1.45;margin-top:8px}.btn{border:0;border-radius:12px;padding:13px 16px;font:700 15px inherit;cursor:pointer;background:var(--accent);color:#08271e}.btn.secondary{background:#263850;color:var(--text);border:1px solid var(--line)}.btn.danger{background:#4a2430;color:#ffdce3}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.actions .btn{flex:1}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#0c1727;border:1px solid var(--line);border-radius:13px;padding:13px}.stat span{display:block;color:var(--muted);font-size:12px}.stat strong{display:block;font-size:21px;margin-top:5px;font-variant-numeric:tabular-nums}.stat.highlight{border-color:#287761;background:#10332e}.resultrow{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}.resultrow:last-child{border:0}.resultrow span{color:var(--muted)}.resultrow strong{font-variant-numeric:tabular-nums;text-align:right}.notice{padding:12px;border-radius:12px;background:#3c3017;color:#ffe6a3;font-size:13px;margin-top:12px}.notice.error{background:#48232c;color:#ffd3dc}.item{padding:13px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}.itemtop{display:flex;justify-content:space-between;gap:10px}.item small{color:var(--muted)}.empty{text-align:center;padding:28px 10px;color:var(--muted)}.hidden{display:none!important}footer{color:var(--muted);font-size:11px;text-align:center;padding:12px}
-@media(max-width:420px){.grid{gap:9px}.card{padding:13px}.stat strong{font-size:19px}}
+main{max-width:760px;margin:auto;padding:16px 14px calc(30px + env(safe-area-inset-bottom))}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}.tab{border:1px solid var(--line);border-radius:13px;background:var(--panel);color:var(--muted);padding:12px 5px;font-weight:650}.tab.active{background:#16483f;border-color:#277b68;color:#b9f8df}
+.card{background:linear-gradient(145deg,#162338,#111b2c);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 10px 28px #0002}.card h2{font-size:17px;margin:0 0 14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field.full{grid-column:1/-1}label{font-size:12px;color:var(--muted)}
+input,select{width:100%;background:#0c1727;border:1px solid #34465e;border-radius:11px;color:var(--text);padding:12px;font:inherit;min-width:0;outline:none}input:focus,select:focus{border-color:var(--accent)}
+.hint{font-size:12px;color:var(--muted);line-height:1.45;margin-top:8px}.btn{border:0;border-radius:12px;padding:12px 14px;font:700 14px inherit;cursor:pointer;background:var(--accent);color:#08271e}.btn.secondary{background:#263850;color:var(--text);border:1px solid var(--line)}.btn.danger{background:#4a2430;color:#ffdce3}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.actions .btn{flex:1}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#0c1727;border:1px solid var(--line);border-radius:13px;padding:12px}.stat span{display:block;color:var(--muted);font-size:12px}.stat strong{display:block;font-size:20px;margin-top:5px;font-variant-numeric:tabular-nums}.stat.highlight{border-color:#287761;background:#10332e}
+.notice{padding:12px;border-radius:12px;background:#3c3017;color:#ffe6a3;font-size:13px;margin-top:12px}.notice.error{background:#48232c;color:#ffd3dc}.item{padding:13px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}.itemtop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.item small{color:var(--muted)}.empty{text-align:center;padding:24px 10px;color:var(--muted)}.hidden{display:none!important}.mini{padding:8px 10px;font-size:12px}.item-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.item-actions .btn{flex:0 0 auto}.footer{color:var(--muted);font-size:11px;text-align:center;padding:14px}
+@media(max-width:420px){.grid{gap:9px}.card{padding:13px}.stat strong{font-size:18px}}
 </style>
 </head>
 <body>
 <header><div class="brand"><div class="logo">↗</div><div><h1>Облік авто</h1><p>Пробіг · пальне · розрахунки</p></div></div></header>
 <main>
-<nav class="tabs">
-<button class="tab active" data-tab="calc">Розрахунок</button>
-<button class="tab" data-tab="cars">Автомобілі</button>
-<button class="tab" data-tab="history">Історія</button>
-</nav>
-
+<nav class="tabs"><button class="tab active" data-tab="calc">Розрахунок</button><button class="tab" data-tab="cars">Автомобілі</button><button class="tab" data-tab="history">Історія</button></nav>
 <section id="calc">
-<div class="card">
-<h2>Дані поїздки</h2>
-<div class="grid">
+<div class="card"><h2>Дані поїздки</h2><div class="grid">
 <div class="field"><label>Номер листа</label><input id="sheet" value="1"></div>
 <div class="field"><label>Дата</label><input id="date" type="date"></div>
 <div class="field full"><label>Автомобіль</label><select id="car"><option value="">Не вибрано</option></select></div>
 <div class="field"><label>Одометр на початку, км</label><input id="start" type="number" inputmode="decimal" value="263655"></div>
 <div class="field"><label>Одометр у кінці, км</label><input id="end" type="number" inputmode="decimal" value="265137"></div>
-</div>
-</div>
-<div class="card">
-<h2>Розподіл пробігу</h2>
-<div class="grid">
+</div></div>
+<div class="card"><h2>Розподіл пробігу та норма</h2><div class="grid">
 <div class="field"><label>Місто, %</label><input id="cityPct" type="number" inputmode="decimal" value="60"></div>
 <div class="field"><label>Траса, %</label><input id="roadPct" type="number" inputmode="decimal" value="40"></div>
 <div class="field full"><label>Норма витрати, л / 100 км</label><input id="norm" type="number" inputmode="decimal" step="0.01" value="10.8"></div>
 <div class="field"><label>Коригування місто, %</label><input id="cityAdj" type="number" inputmode="decimal" value="5"></div>
 <div class="field"><label>Коригування траса, %</label><input id="roadAdj" type="number" inputmode="decimal" value="-15"></div>
-</div>
-<p class="hint">Початкові значення коригувань відповідають прикладу в наданій таблиці: місто +5%, траса −15%.</p>
-</div>
-<div class="card">
-<h2>Облік пального, л</h2>
-<div class="grid">
+</div><p class="hint">Формули відповідають наданому Excel: міська витрата з коригуванням +5%, трасова −15% (значення можна змінити).</p></div>
+<div class="card"><h2>Облік пального, л</h2><div class="grid">
 <div class="field"><label>Залишок перед виїздом</label><input id="fuelBefore" type="number" inputmode="decimal" value="121"></div>
 <div class="field"><label>Отримано пального</label><input id="fuelIn" type="number" inputmode="decimal" value="180"></div>
-</div>
-</div>
-<div class="card">
-<h2>Результат</h2>
-<div class="stats">
-<div class="stat"><span>Загальний пробіг</span><strong id="rKm">1 482 км</strong></div>
-<div class="stat"><span>Пробіг містом</span><strong id="rCityKm">889,2 км</strong></div>
-<div class="stat"><span>Пробіг трасою</span><strong id="rRoadKm">592,8 км</strong></div>
-<div class="stat"><span>Витрачено пального</span><strong id="rUsed">— л</strong></div>
-<div class="stat"><span>Витрачено містом</span><strong id="rCityFuel">— л</strong></div>
-<div class="stat"><span>Витрачено трасою</span><strong id="rRoadFuel">— л</strong></div>
-<div class="stat"><span>Пального всього</span><strong id="rAvailable">301 л</strong></div>
-<div class="stat highlight"><span>Залишок на стоянці</span><strong id="rRemain">— л</strong></div>
-</div>
-<div id="validation" class="notice hidden"></div>
-<div class="actions"><button class="btn" id="save">Зберегти розрахунок</button><button class="btn secondary" id="reset">Очистити форму</button></div>
-</div>
+</div></div>
+<div class="card"><h2>Результат</h2><div class="stats">
+<div class="stat"><span>Загальний пробіг</span><strong id="rKm">—</strong></div><div class="stat"><span>Пробіг містом</span><strong id="rCityKm">—</strong></div>
+<div class="stat"><span>Пробіг трасою</span><strong id="rRoadKm">—</strong></div><div class="stat"><span>Витрачено всього</span><strong id="rUsed">—</strong></div>
+<div class="stat"><span>Витрачено містом</span><strong id="rCityFuel">—</strong></div><div class="stat"><span>Витрачено трасою</span><strong id="rRoadFuel">—</strong></div>
+<div class="stat"><span>Пального всього</span><strong id="rAvailable">—</strong></div><div class="stat highlight"><span>Залишок на стоянці</span><strong id="rRemain">—</strong></div>
+</div><div id="validation" class="notice hidden"></div><div class="actions"><button class="btn" id="save">Зберегти розрахунок</button><button class="btn secondary" id="reset">Очистити форму</button></div></div>
 </section>
-
 <section id="cars" class="hidden">
 <div class="card"><h2>Додати автомобіль</h2><div class="grid">
 <div class="field"><label>Марка / модель</label><input id="carName" placeholder="Напр. Volkswagen Crafter"></div>
@@ -81,54 +62,58 @@ main{max-width:760px;margin:auto;padding:18px 14px 105px}.tabs{display:grid;grid
 </div><div class="actions"><button class="btn" id="addCar">Додати автомобіль</button></div></div>
 <div class="card"><h2>Список автомобілів</h2><div id="carList" class="empty">Поки що автомобілі не додані.</div></div>
 </section>
-
 <section id="history" class="hidden">
-<div class="card"><h2>Збережені розрахунки</h2><div id="historyList" class="empty">Історія поки порожня.</div><div class="actions"><button class="btn secondary" id="export">Експортувати CSV</button><button class="btn danger" id="clearHistory">Очистити історію</button></div></div>
+<div class="card"><h2>Збережені розрахунки</h2><div id="historyList" class="empty">Історія поки порожня.</div>
+<div class="actions"><button class="btn secondary" id="export">Експорт CSV</button><button class="btn secondary" id="backup">Резервна копія</button><button class="btn secondary" id="restore">Відновити копію</button><button class="btn danger" id="clearHistory">Очистити історію</button></div>
+<input id="restoreFile" type="file" accept="application/json,.json" class="hidden">
+<p class="hint">Резервна копія містить список автомобілів і історію. Збережіть файл окремо, щоб перенести дані на інший телефон.</p></div>
 </section>
-<footer>Дані зберігаються локально в цьому браузері на цьому пристрої.</footer>
+<div class="footer">Безкоштовно · Без реєстрації · Дані залишаються на цьому пристрої</div>
 </main>
 <script>
-const $=id=>document.getElementById(id);
-const ids=['sheet','date','start','end','cityPct','roadPct','norm','cityAdj','roadAdj','fuelBefore','fuelIn'];
+'use strict';
+const $=id=>document.getElementById(id), ids=['sheet','date','start','end','cityPct','roadPct','norm','cityAdj','roadAdj','fuelBefore','fuelIn'];
 const num=id=>Number(String($(id).value).replace(',','.'))||0;
 const fmt=n=>Number(n).toLocaleString('uk-UA',{maximumFractionDigits:2});
 const read=(k,d=[])=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
-let cars=read('cars'), history=read('history');
+let cars=read('oblik_cars'), history=read('oblik_history');
 $('date').value=new Date().toISOString().slice(0,10);
 function calc(){
  const km=num('end')-num('start'), cp=num('cityPct'), rp=num('roadPct'), norm=num('norm');
  const cityKm=km*cp/100, roadKm=km*rp/100;
- const cityFuel=cityKm*norm/100*(1+num('cityAdj')/100);
- const roadFuel=roadKm*norm/100*(1+num('roadAdj')/100);
+ const cityFuel=cityKm*norm/100*(1+num('cityAdj')/100), roadFuel=roadKm*norm/100*(1+num('roadAdj')/100);
  const used=cityFuel+roadFuel, available=num('fuelBefore')+num('fuelIn'), remain=available-used;
- const valid=km>=0&&cp>=0&&rp>=0&&Math.abs(cp+rp-100)<0.001&&norm>=0&&num('cityAdj')>-100&&num('roadAdj')>-100;
- $('rKm').textContent=fmt(km)+' км';$('rCityKm').textContent=fmt(cityKm)+' км';$('rRoadKm').textContent=fmt(roadKm)+' км';
- $('rCityFuel').textContent=fmt(cityFuel)+' л';$('rRoadFuel').textContent=fmt(roadFuel)+' л';$('rUsed').textContent=fmt(used)+' л';
- $('rAvailable').textContent=fmt(available)+' л';$('rRemain').textContent=fmt(remain)+' л';
+ const valid=km>=0&&cp>=0&&rp>=0&&Math.abs(cp+rp-100)<0.001&&norm>0&&num('cityAdj')>-100&&num('roadAdj')>-100&&num('fuelBefore')>=0&&num('fuelIn')>=0;
+ [['rKm',km,' км'],['rCityKm',cityKm,' км'],['rRoadKm',roadKm,' км'],['rUsed',used,' л'],['rCityFuel',cityFuel,' л'],['rRoadFuel',roadFuel,' л'],['rAvailable',available,' л'],['rRemain',remain,' л']].forEach(([id,v,u])=>$(id).textContent=fmt(v)+u);
  $('rRemain').style.color=remain<0?'#fb7185':'#6ee7b7';
  const v=$('validation');v.classList.toggle('hidden',valid);v.classList.toggle('error',!valid);
  v.textContent=km<0?'Кінцевий одометр не може бути меншим за початковий.':Math.abs(cp+rp-100)>=0.001?'Сума міського та трасового пробігу має дорівнювати 100%.':'Перевірте введені значення.';
  return {km,cityKm,roadKm,cityFuel,roadFuel,used,available,remain,valid};
 }
 ids.forEach(id=>$(id).addEventListener('input',calc));
-function persist(){localStorage.setItem('cars',JSON.stringify(cars));localStorage.setItem('history',JSON.stringify(history))}
+function persist(){localStorage.setItem('oblik_cars',JSON.stringify(cars));localStorage.setItem('oblik_history',JSON.stringify(history))}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function renderCars(){
- $('carList').innerHTML=cars.length?cars.map((c,i)=>`<div class="item"><div class="itemtop"><div><b>${esc(c.name)}</b><br><small>${esc(c.plate)} · ${fmt(c.norm)} л/100 км</small></div><button class="btn danger" data-delcar="${i}">Видалити</button></div></div>`).join():'<div class="empty">Поки що автомобілі не додані.</div>';
- $('car').innerHTML='<option value="">Не вибрано</option>'+cars.map((c,i)=>`<option value="${i}">${esc(c.name)} · ${esc(c.plate)}</option>`).join();
+ $('carList').innerHTML=cars.length?cars.map((c,i)=>`<div class="item"><div class="itemtop"><div><b>${esc(c.name)}</b><br><small>${esc(c.plate)} · ${fmt(c.norm)} л/100 км</small></div></div><div class="item-actions"><button class="btn secondary mini" data-editcar="${i}">Змінити</button><button class="btn danger mini" data-delcar="${i}">Видалити</button></div></div>`).join(''):'<div class="empty">Поки що автомобілі не додані.</div>';
+ $('car').innerHTML='<option value="">Не вибрано</option>'+cars.map((c,i)=>`<option value="${i}">${esc(c.name)} · ${esc(c.plate)}</option>`).join('');
 }
 function renderHistory(){
- $('historyList').innerHTML=history.length?history.slice().reverse().map((h,i)=>`<div class="item"><div class="itemtop"><div><b>Лист №${esc(h.sheet)}</b><br><small>${esc(h.date)} · ${esc(h.car||'Автомобіль не вибрано')}</small></div><b>${fmt(h.km)} км</b></div><div class="hint">Витрата: ${fmt(h.used)} л · Залишок: ${fmt(h.remain)} л</div></div>`).join():'<div class="empty">Історія поки порожня.</div>';
+ $('historyList').innerHTML=history.length?history.slice().reverse().map((h,rev)=>{const i=history.length-1-rev;return `<div class="item"><div class="itemtop"><div><b>Лист №${esc(h.sheet)}</b><br><small>${esc(h.date)} · ${esc(h.car||'Автомобіль не вибрано')}</small></div><b>${fmt(h.km)} км</b></div><div class="hint">Витрата: ${fmt(h.used)} л · Залишок: ${fmt(h.remain)} л</div><div class="item-actions"><button class="btn secondary mini" data-view="${i}">Завантажити</button><button class="btn danger mini" data-delhistory="${i}">Видалити</button></div></div>`}).join(''):'<div class="empty">Історія поки порожня.</div>';
 }
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-$('addCar').onclick=()=>{let name=$('carName').value.trim(),plate=$('carPlate').value.trim(),norm=Number($('carNorm').value);if(!name||!plate||!(norm>0)){alert('Заповніть назву, номер і норму витрати.');return}cars.push({name,plate,norm});persist();renderCars();$('carName').value='';$('carPlate').value='';$('carNorm').value=''};
-$('carList').onclick=e=>{let b=e.target.closest('[data-delcar]');if(b){cars.splice(+b.dataset.delcar,1);persist();renderCars()}};
-$('car').onchange=()=>{let c=cars[+$('car').value];if(c)$('norm').value=c.norm;calc()};
-$('save').onclick=()=>{let r=calc();if(!r.valid){alert('Виправте помилки перед збереженням.');return}let c=cars[+$('car').value];history.push({sheet:$('sheet').value,date:$('date').value,car:c?c.name+' ('+c.plate+')':'',...r});persist();renderHistory();alert('Розрахунок збережено в історії цього пристрою.')};
-$('reset').onclick=()=>{if(confirm('Очистити поля розрахунку?')){['sheet','start','end','cityPct','roadPct','norm','cityAdj','roadAdj','fuelBefore','fuelIn'].forEach((id)=>$(id).value='');calc()}};
+$('addCar').onclick=()=>{const name=$('carName').value.trim(),plate=$('carPlate').value.trim(),norm=Number($('carNorm').value);if(!name||!plate||!(norm>0)){alert('Заповніть назву, номер і норму витрати.');return}cars.push({name,plate,norm});persist();renderCars();$('carName').value='';$('carPlate').value='';$('carNorm').value=''};
+$('carList').onclick=e=>{const del=e.target.closest('[data-delcar]'),edit=e.target.closest('[data-editcar]');if(del){const i=+del.dataset.delcar;if(confirm('Видалити автомобіль зі списку?')){cars.splice(i,1);persist();renderCars()}}if(edit){const i=+edit.dataset.editcar,c=cars[i];$('carName').value=c.name;$('carPlate').value=c.plate;$('carNorm').value=c.norm;cars.splice(i,1);persist();renderCars();$('carName').focus()}};
+$('car').onchange=()=>{const c=cars[+$('car').value];if(c)$('norm').value=c.norm;calc()};
+$('save').onclick=()=>{const r=calc();if(!r.valid){alert('Виправте помилки перед збереженням.');return}const c=cars[+$('car').value];history.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),sheet:$('sheet').value,date:$('date').value,car:c?c.name+' ('+c.plate+')':'',start:num('start'),end:num('end'),cityPct:num('cityPct'),roadPct:num('roadPct'),norm:num('norm'),cityAdj:num('cityAdj'),roadAdj:num('roadAdj'),fuelBefore:num('fuelBefore'),fuelIn:num('fuelIn'),...r});persist();renderHistory();alert('Розрахунок збережено на цьому пристрої.')};
+$('historyList').onclick=e=>{const del=e.target.closest('[data-delhistory]'),view=e.target.closest('[data-view]');if(del){const i=+del.dataset.delhistory;if(confirm('Видалити цей запис?')){history.splice(i,1);persist();renderHistory()}}if(view){const h=history[+view.dataset.view];['sheet','date','start','end','cityPct','roadPct','norm','cityAdj','roadAdj','fuelBefore','fuelIn'].forEach(k=>$(k).value=h[k]??'');$('car').value='';calc();document.querySelector('[data-tab="calc"]').click()}};
+$('reset').onclick=()=>{if(confirm('Повернути початкові значення форми?')){const d={sheet:'1',start:'',end:'',cityPct:'60',roadPct:'40',norm:'10.8',cityAdj:'5',roadAdj:'-15',fuelBefore:'0',fuelIn:'0'};Object.entries(d).forEach(([k,v])=>$(k).value=v);$('date').value=new Date().toISOString().slice(0,10);$('car').value='';calc()}};
 $('clearHistory').onclick=()=>{if(confirm('Видалити всю історію розрахунків?')){history=[];persist();renderHistory()}};
-$('export').onclick=()=>{if(!history.length){alert('Історія порожня.');return}const keys=['sheet','date','car','km','cityKm','roadKm','cityFuel','roadFuel','used','available','remain'];const rows=[keys.join(';'),...history.map(h=>keys.map(k=>String(h[k]??'').replace('.',',')).join(';'))];const blob=new Blob(['\ufeff'+rows.join('\n')],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='istoriya-rozrahunkiv.csv';a.click();URL.revokeObjectURL(a.href)};
+$('export').onclick=()=>{if(!history.length){alert('Історія порожня.');return}const keys=['sheet','date','car','start','end','km','cityKm','roadKm','norm','cityFuel','roadFuel','used','available','remain'];const rows=[keys.join(';'),...history.map(h=>keys.map(k=>String(h[k]??'').replace('.',',')).join(';'))];download(new Blob(['\ufeff'+rows.join('\n')],{type:'text/csv;charset=utf-8'}),'oblik-avto-history.csv')};
+$('backup').onclick=()=>download(new Blob([JSON.stringify({app:'OblikAvto',version:1,cars,history},null,2)],{type:'application/json'}),'oblik-avto-backup.json');
+$('restore').onclick=()=>$('restoreFile').click();
+$('restoreFile').onchange=async()=>{const f=$('restoreFile').files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data.cars)||!Array.isArray(data.history))throw Error();if(confirm('Замінити поточні автомобілі та історію даними з копії?')){cars=data.cars;history=data.history;persist();renderCars();renderHistory();alert('Резервну копію відновлено.')}}catch{alert('Не вдалося прочитати файл резервної копії.')}finally{$('restoreFile').value=''}};
+function download(blob,name){const a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));['calc','cars','history'].forEach(id=>$(id).classList.toggle('hidden',id!==b.dataset.tab))});
 renderCars();renderHistory();calc();
-if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script>
 </body></html>
