@@ -1,0 +1,6 @@
+{
+  "appId": "ua.oblikavto.app",
+  "appName": "Облік авто",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
